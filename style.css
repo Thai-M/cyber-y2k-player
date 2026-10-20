@@ -1,0 +1,231 @@
+*{
+    box-sizing: 0;
+    margin: 0;
+    
+}
+/* ==========================================================================
+   1. PLANO DE FUNDO DA PÁGINA (O cenário atrás do celular)
+   ========================================================================== */
+body {
+    /* Escolha APENAS UM dos fundos abaixo e apague o outro: */
+    background-color: #0b1120; /* Cor escura de segurança */
+    background-image: url('static/background_playlist_y2k_exemplo_2.png'); /* Sua imagem Cyber Y2K */
+    
+    /* Ajustes para a imagem cobrir a tela perfeitamente */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Alinhamento: Centraliza o celular na tela do monitor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    
+    /* Configurações de texto padrão */
+    font-family: 'Courier New', Courier, monospace;
+    color: #93c5fd; 
+}
+
+
+/* ==========================================================================
+   2. O CELULAR / PLAYER (A carcaça física do aparelho)
+   ========================================================================== */
+.cyber-phone {
+    width: 260px; /* Mudamos de 320px para 260px (ficou mais compacto) */
+    background: rgba(15, 23, 42, 0.75); 
+    border: 2px solid #fff; 
+    border-radius: 30px;
+    padding: 20px;
+    /* Fundo translúcido (efeito vidro) */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /*Borda sutil semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    /* Camadas de sombras para criar profundidade e o "glow" (brilho) externo/interno */
+    box-sizing: 
+     0 8px 32px 0 rgba(0, 0, 0, 0.37), /* Sombra projetada no fundo */
+     inset 0 1px 1px 0 rgba(255, 255, 255, 0.5), /* Brilho interno na bordinha superior */
+     0 0 20px rgba(0, 195, 255, 0.4); /* Brilho neon/azulado característico da imagem */
+    
+   
+
+}
+
+
+/* ==========================================================================
+   3. A TELA DIGITAL (O display interno do celular)
+   ========================================================================== */
+
+/*screen-content*/
+
+ .cyber-screen {
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid #1d4ed8;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+
+}
+
+/* Detalhes do topo da tela */
+.screen-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #60a5fa;
+    border-bottom: 1px dashed #1d4ed8;
+    padding-bottom: 5px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #3b82f6;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #3b82f6;
+}
+
+.music-title-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    /* Efeito de túnel nas pontas (degrade nas extremidades) */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+/* Textos da música */
+.music-title {
+    font-size: 20px;
+    margin: 15px 0 0 0;
+    text-transform: lowercase;
+    color: #eff6ff;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+    letter-spacing: -1px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* Animação estilo Winamp: rápida e contínua */
+.music-title.marquee {
+    animation: winampMarquee 12s linear infinite;
+}
+
+@keyframes winampMarquee {
+    /* 0% a 20%: Fica parado no início exibindo o nome normalmente */
+    0%, 20% {
+        transform: translateX(0%);
+    }
+    /* 20% a 70%: Desliza suavemente para a esquerda até sumir completamente */
+    70% {
+        transform: translateX(-100%);
+    }
+    /* 70.01%: Teleporta instantaneamente para fora da tela na direita (sem transição visível) */
+    70.01% {
+        transform: translateX(100%);
+    }
+    /* 70.01% a 100%: Entra vindo da direita até voltar à posição inicial (0%) */
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+
+.music-subtitle {
+    font-size: 24px;
+    margin: 0 0 15px 0;
+    color: #60a5fa;
+}
+
+/* O CD Giratório */
+/* O CD Giratório (Ajustado para o novo tamanho do celular) */
+.cd-player {
+    width: 110px;  /* Mudamos de 140px para 110px */
+    height: 100px; /* Mudamos de 140px para 110px */
+    margin: 20px auto;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #1e3a8a, #60a5fa, #1d4ed8, #93c5fd, #1e3a8a);
+    border: 2px solid #93c5fd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+}
+
+
+.cd-center {
+    width: 35px;
+    height: 35px;
+    background-color: #020617;
+    border: 3px solid #60a5fa;
+    border-radius: 50%;
+}
+
+/* ==========================================================================
+   5. ANIMAÇÕES (Para fazer o CD girar)
+   ========================================================================== */
+   /* Esta classe será colocada no CD via javascript quando a música tocar */
+.cd-girando {
+    animation: rodarCD 4s linear infinite;
+}  
+
+/* O comando que faz girar de 0 a 360 graus continuamente */
+@keyframes rodarCD {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.track-info {
+    font-size: 10px;
+    text-align: center;
+    color: #60a5fa;
+    margin-top: 15px;
+}
+
+.screen-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    margin-top: 10px;
+    border-top: 1px dashed #1d4ed8;
+    padding-top: 5px;
+}
+
+
+/* ==========================================================================
+   4. OS BOTÕES DE CONTROLE
+   ========================================================================== */
+.cyber-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn-cyber {
+    background: transparent;
+    border: 1px solid #3b82f6;
+    color: #93c5fd;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-cyber:hover {
+    background: rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 10px #3b82f6;
+    color: #fff;
+}

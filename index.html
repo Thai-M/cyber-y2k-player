@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!---------- FONT AWESOME --------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>CyberPod🎧Y2K</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <!-- O Celular/Player Cyber -->
+   <div class="cyber-phone" id="phone">
+    <audio id="audio-player"></audio>
+
+     <!-- Tela Superior (Inspirada no Nokia N90 / Windows Media Player) -->
+         <div class="cyber-screen">
+           <div class="screen-header">
+            <span> Y2K playlist // 00:12:20 </span>
+            <span class="status-dot"></span>
+            </div>
+
+            <div class="screen-content">
+                <div class="music-title-container">
+                <h1 class="music-title">Carregando...</h1>
+                </div>
+                <p class="music-subtitle">Aguarde</p>
+
+                <!-- Representacao do CD giratorio da imagem 1 -->
+                 <div class="cd-player">
+                    <div class="cd-center"></div>
+                 </div>
+
+                 <p class="track-info">Álbum</p>
+            </div>
+
+
+            <div class="screen-footer">
+                <span>FAIXA</span>
+                <span id="numero-faixa">000</span>
+            </div>
+         </div>
+
+
+         <div class="cyber-controls">
+            <button class="btn-cyber"><i class="fa-solid fa-backward"></i></button>
+            <button class="btn-cyber" id="btn-play"><i class="fa-solid fa-play"></i></button>
+            <button class="btn-cyber"><i class="fa-solid fa-forward"></i></button>
+         </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
