@@ -8,35 +8,35 @@
         subtitulo: "KiiiKiii",
         track: "001",
         album: "Delulu Park",
-        arquivo: "music/delulu.mp3.mp3"
+        arquivo: "music/delulu.mp3"
     },
     {
         titulo: "404 (New Era)",
         subtitulo: "KiiiKiii",
         track: "002",
         album: "Delulu Park",
-        arquivo: "music/404_(new_era).mp3.mp3"
+        arquivo: "music/404_(new_era).mp3"
     },
     {
         titulo: "Candy Pink Magic Hole Flip Phone",
         subtitulo: "KiiiKiii",
         track: "003",
         album: "WhyKiiiKiii",
-        arquivo: "music/candy_pink_magic_hole_flip_phone.mp3.mp3"
+        arquivo: "music/candy_pink_magic_hole_flip_phone.mp3"
     },
     {
         titulo: "Blah Blah Blah",
         subtitulo: "R2",
         track: "004",
         album: "Blah Blah Blah",
-        arquivo: "music/blah_blah_blah.mp3.mp3"
+        arquivo: "music/blah_blah_blah.mp3"
     },
     {
      titulo: "エレクトロ・ワールド (Electro World)", 
         subtitulo: "Perfume", 
         track: "005", 
         album: "Electro World",
-        arquivo: "music/electro_world.mp3.mp3"    
+        arquivo: "music/electro_world.mp3"    
     }
  ];
 
@@ -46,6 +46,7 @@
  const btnPlay = document.getElementById("btn-play");
  const btnVoltar = document.querySelector(".cyber-controls button:first-child"); 
  const btnAvancar = document.querySelector(".cyber-controls button:nth-child(3)");
+
 
  const tituloTela = document.querySelector(".music-title");
  const subtituloTela = document.querySelector(".music-subtitle");
@@ -96,8 +97,11 @@
  btnPlay.addEventListener("click", alternarPlay);
  btnAvancar.addEventListener("click", avancarMusica);
  btnVoltar.addEventListener("click", voltarMusica);
+ audioPlayer.addEventListener("ended", voltarMusica); // para seguir para a proxima musica automaticamente.
+
 
  carregarMusica(musicaAtualIndex);
+
 
  //ANIMAÇÃO NO TITULO DAS MUSICAS
 
